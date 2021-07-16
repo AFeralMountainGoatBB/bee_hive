@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/bee_hive/static/css/main.50cd0536.chunk.css",
+    "main.js": "/bee_hive/static/js/main.9bcdc8d1.chunk.js",
+    "main.js.map": "/bee_hive/static/js/main.9bcdc8d1.chunk.js.map",
+    "runtime-main.js": "/bee_hive/static/js/runtime-main.f3d084c3.js",
+    "runtime-main.js.map": "/bee_hive/static/js/runtime-main.f3d084c3.js.map",
+    "static/js/2.f1de271d.chunk.js": "/bee_hive/static/js/2.f1de271d.chunk.js",
+    "static/js/2.f1de271d.chunk.js.map": "/bee_hive/static/js/2.f1de271d.chunk.js.map",
+    "static/js/3.9ffdb874.chunk.js": "/bee_hive/static/js/3.9ffdb874.chunk.js",
+    "static/js/3.9ffdb874.chunk.js.map": "/bee_hive/static/js/3.9ffdb874.chunk.js.map",
+    "index.html": "/bee_hive/index.html",
+    "static/css/main.50cd0536.chunk.css.map": "/bee_hive/static/css/main.50cd0536.chunk.css.map",
+    "static/js/2.f1de271d.chunk.js.LICENSE.txt": "/bee_hive/static/js/2.f1de271d.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/bee_hive/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f3d084c3.js",
+    "static/js/2.f1de271d.chunk.js",
+    "static/css/main.50cd0536.chunk.css",
+    "static/js/main.9bcdc8d1.chunk.js"
+  ]
+}
