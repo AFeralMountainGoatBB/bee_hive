@@ -28,6 +28,7 @@ function MainPage() {
   const [timerInterval, setTimerInterval]=useState([]);
   const timerIntervalRef = useRef(timerInterval);
 
+  //settings are for setting up world variables
   const [settingsState, setSettingsState] = useState(
     {
       height: 10,
