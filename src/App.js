@@ -1,25 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import MainPage from './pages/MainPage.js'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <MainPage/>
       </header>
     </div>
   );
 }
+/*ATTRIBUTIONS*/
+/*HIVE SVG ICON BY: https://www.svgrepo.com/svg/320350/artificial-hive
+COLLECTION: Game Skills Vectors
+LICENSE: CC Attribution License
+AUTHOR: game-icons.net
+*/
 
 export default App;
