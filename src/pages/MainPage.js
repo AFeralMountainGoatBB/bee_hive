@@ -91,9 +91,16 @@ function MainPage() {
 
   function advanceTurn() {
     console.log("advancing turn");
-    worldModelRef?.current?.advanceTurn();
+    if (!worldModelRef.current.endCase)
+    {
+          worldModelRef?.current?.advanceTurn();
     //console.log(worldModel.turnDisplay);
     updateTurnDisplay(worldModelRef?.current?.turnDisplay);
+    }
+    else
+    {
+      stopTimer();
+    }
   }
 
   function autoRunToggle()
@@ -127,23 +134,23 @@ function MainPage() {
     <div>
       <div>
         {(worldModel) ?
-          <div>
+          <div >
             <p>{worldModel.turnDisplay}</p>
             <Grid gridModel={worldModel.worldGrid} />
-            <Button onClick={() => advanceTurn()}>Advance Turn</Button>
-            <Button onClick={autoRunToggle}>Toggle AutoRun</Button>
+            <Button style={{color:"white"}} onClick={() => advanceTurn()}>Advance Turn</Button>
+            <Button style={{color:"white"}} onClick={autoRunToggle}>Toggle AutoRun</Button>
           </div> :
-          <Button onClick={() => generateWorld()}>Generate World</Button>}
+          <Button style={{color:"white"}} onClick={() => generateWorld()}>Generate World</Button>}
       </div>
       {(worldModel?.endCase)? <EndDialog open={true} endCase={worldModel.endCase}/> : <div/>}
-      <Button onClick={toggleDrawer(true)}>{"Settings"}</Button>
+      <Button style={{color:"white"}} onClick={toggleDrawer(true)}>{"Settings"}</Button>
       <Drawer open={drawerState['left']} onClose={toggleDrawer(false)}>
         {<div>
           <OptionsController getSettings={getSettings} settings={settingsState}/>
-          <Button onClick={toggleDrawer(false)} >Close Settings</Button>
+          <Button style={{color:"white"}} onClick={toggleDrawer(false)} >Close Settings</Button>
         </div>}
       </Drawer>
-      <Button onClick={()=>resetWorld()}>Reset</Button>
+      <Button style={{color:"white"}} onClick={()=>resetWorld()}>Reset</Button>
     </div>
 
   )
