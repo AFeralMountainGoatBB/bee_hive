@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bee_hive/static/css/main.50cd0536.chunk.css",
-    "main.js": "/bee_hive/static/js/main.9bcdc8d1.chunk.js",
-    "main.js.map": "/bee_hive/static/js/main.9bcdc8d1.chunk.js.map",
+    "main.js": "/bee_hive/static/js/main.ca45bacb.chunk.js",
+    "main.js.map": "/bee_hive/static/js/main.ca45bacb.chunk.js.map",
     "runtime-main.js": "/bee_hive/static/js/runtime-main.f3d084c3.js",
     "runtime-main.js.map": "/bee_hive/static/js/runtime-main.f3d084c3.js.map",
     "static/js/2.f1de271d.chunk.js": "/bee_hive/static/js/2.f1de271d.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.f3d084c3.js",
     "static/js/2.f1de271d.chunk.js",
     "static/css/main.50cd0536.chunk.css",
-    "static/js/main.9bcdc8d1.chunk.js"
+    "static/js/main.ca45bacb.chunk.js"
   ]
 }
