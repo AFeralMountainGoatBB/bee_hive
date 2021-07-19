@@ -1,42 +1,53 @@
-import {EmojiNature, LocalFlorist, Warning } from "@material-ui/icons";
+import { EmojiNature, LocalFlorist, Warning } from "@material-ui/icons";
+import {ReactComponent as HiveIcon} from '../graphics/hive2.svg';
+//import { ReactComponent as HiveIcon } from './your-svg.svg';
+//import HiveIcon from "../graphics/hive.png"
+import { makeStyles } from '@material-ui/styles';
+import Icon from '@material-ui/core/Icon'
 
-function FeatureSymbol(props)
-{
-    let dangerSymbol="%☠";
-    let foodSymbol="x❁";
-    let extraInfo="";
-    let feature=props.feature;
-    function featureIcon(feature)
-    {
-        switch(feature.name)
-        {
+
+function FeatureSymbol(props) {
+    let dangerSymbol = "%☠";
+    let foodSymbol = "x❁";
+    let extraInfo = "";
+    let feature = props.feature;
+
+    const classes = makeStyles({
+        imageIcon: {
+            height: '100%'
+        },
+        iconRoot: {
+            textAlign: 'center'
+        }
+    });
+
+    function featureIcon(feature) {
+        switch (feature.name) {
             case 'Hive':
-                return <EmojiNature/>;
+                return <HiveIcon width="100%" height="100%" />
             case 'Danger':
-                return <Warning/>;
+                return <Warning />;
             case 'Food':
-                return <LocalFlorist/>;
+                return <LocalFlorist />;
             default:
-                return <div/>;
+                return <div />;
         }
     }
 
-    function featureExtraInfo()
-    {
-        switch(feature.name)
-        {
+    function featureExtraInfo() {
+        switch (feature.name) {
             case 'Danger':
-                return feature.chance+dangerSymbol;
+                return feature.chance + dangerSymbol;
             case 'Food':
-                return feature.charges+foodSymbol;
+                return feature.charges + foodSymbol;
             default:
                 return "";
         }
-        
+
     }
 
     return (<div style={{}}>
-        {featureIcon(props.feature)} <div style={{fontSize:"xx-small", marginTop:"-5px"}}>{featureExtraInfo()}</div>
+        {featureIcon(props.feature)} <div style={{ fontSize: "xx-small", marginTop: "-5px" }}>{featureExtraInfo()}</div>
     </div>)
 }
 

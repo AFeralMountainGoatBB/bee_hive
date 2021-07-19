@@ -171,7 +171,6 @@ class GridClass
                 }
             }
         }
-        console.log("ExploredArray", exploredArray);
         return exploredArray;
     }
 
@@ -188,7 +187,6 @@ class GridClass
                 }
             }
         }
-        console.log("food tile array", foodTileArray);
         return foodTileArray;
     }
 

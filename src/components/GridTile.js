@@ -1,5 +1,7 @@
 import { BorderColor, EmojiNature, LocalFlorist, PinDropSharp, Warning } from "@material-ui/icons";
+import { height } from "@material-ui/system";
 import FeatureSymbol from "./FeatureSymbol";
+
 
 function GridTile(props)
 {
@@ -74,22 +76,6 @@ function GridTile(props)
                 break;
         }
         return style;
-    }
-
-    function featureIcon(feature)
-    {
-        switch(feature.name)
-        {
-            case 'Hive':
-                return <EmojiNature/>;
-            case 'Danger':
-                return <Warning/>;
-            case 'Food':
-                return <LocalFlorist/>;
-            default:
-                return <div/>;
-    
-        }
     }
 
     return(

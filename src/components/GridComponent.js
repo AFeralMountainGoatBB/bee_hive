@@ -8,7 +8,6 @@ function Grid(props)
 
     function getJSXTile(tile)
     {
-        console.log("tile", tile);
         let workingJSXTile = <GridTile key={tile.xLoc+"-"+tile.yLoc} 
         numBees={tile.numBees} 
         feature={tile.feature} 

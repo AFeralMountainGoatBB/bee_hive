@@ -2,6 +2,7 @@ import BeeClass from "./beeClass";
 
 class HiveClass {
     location = "";
+    globalLog;
     numBees;
     beeArray = [];
     unexploredTileArray = [];
@@ -10,7 +11,8 @@ class HiveClass {
     planning = true;
     hiveMemory;
 
-    constructor(location, numBees, gridClass) {
+    constructor(location, numBees, gridClass, log) {
+        this.globalLog=log;
         this.location = location;
         this.numBees = numBees;
         this.worldGrid = gridClass;
@@ -20,8 +22,9 @@ class HiveClass {
 
     generateBees() {
         for (let i = 0; i < this.numBees; i++) {
-            this.beeArray.push(new BeeClass(this.worldGrid, i));
+            this.beeArray.push(new BeeClass(this.worldGrid, i, this.globalLog));
         }
+
     }
 
     startPhase() {
@@ -53,6 +56,7 @@ class HiveClass {
         for (let tile in avoidTiles) {
             this.worldGrid.fullGridModel[avoidTiles[tile].xLoc][avoidTiles[tile].yLoc].status = "Explored";
         }
+        this.globalLog.addTurnInfo(this.worldGrid.turnTracker, this.worldGrid.subTurnCycle[this.worldGrid.subTurnCycleActive])
     }
 
     gatherPhase() {
@@ -85,17 +89,25 @@ class HiveClass {
 
     syncBeeMemories() {
         //get new memories from bees, then push new hive memory to bees
+        let beesSynced = [];
         for (let bee in this.beeArray) {
             //check if bee is alive before taking memory
             if (this.beeArray[bee].alive === true) {
                 let tempMemory = this.beeArray[bee].getMemory();
                 this.syncToHiveMemory(tempMemory);
+                beesSynced.push(this.beeArray[bee].beeId);
             }
         }
-        //if sharing memory
+        this.globalLog.addToLog(beesSynced)
+     
         if (this.sharingMemory) {
             this.beeArray.map(bee => this.syncToBeeMemory(bee))
         }
+    }
+
+    syncLog(beeIds)
+    {
+        return `Bees ${beeIds} have had their memories synced`;
     }
 
     syncToHiveMemory(memory) {
