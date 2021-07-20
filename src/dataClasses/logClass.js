@@ -2,35 +2,44 @@
 
 class LogClass {
     turnLogs = [];
-    writtenLogs = [];
-    constructor(settings) {
-
+    worldClass;
+    constructor(worldClass, settings) {
+        this.worldClass=worldClass;
+        this.turnLogs=[];
     }
 
     //added at action
-    addToLog(turnNum, turnPhase, logEntry) {
-        if (turnLogs[turnNum] === undefined) {
-            turnLogs[turnNum] =
+    addToLog(logEntry) {
+        let turnNum = this.worldClass.turnTracker;
+        let turnPhase = this.worldClass.subTurnCycle[this.worldClass.subTurnCycleActive];
+        console.log("turnphase", turnPhase)
+        if (this.turnLogs[turnNum] === undefined) {
+            this.turnLogs[turnNum] =
             {
-                explore: {phase:"Explore", log:[], endGrid: []},
-                gather: {phase:"Gather", log:[], endGrid: []},
-                sync: {phase:"Sync", log:[], endGrid: []},
+                Start:{phase:"Start", log:[], endGrid: []},
+                Explore: {phase:"Explore", log:[], endGrid: []},
+                Gather: {phase:"Gather", log:[], endGrid: []},
+                Sync: {phase:"Sync", log:[], endGrid: []},
             };
         }
-        turnNum[turnPhase].log.push(logEntry);
+      //  console.log("Turn logs num", this.turnLogs[turnNum]);
+        this.turnLogs[turnNum][turnPhase].log.push(logEntry);
     }
 
     //added at end of turn in world
-    addTurnInfo(turnNum, turnPhase, gridInfo) {
-        if (turnLogs[turnNum] === undefined) {
-            turnLogs[turnNum] =
+    addTurnInfo(gridInfo) {
+        let turnNum = this.worldClass.turnTracker;
+        let turnPhase = this.worldClass.subTurnCycle[this.worldClass.subTurnCycleActive]
+        if (this.turnLogs[turnNum] === undefined) {
+            this.turnLogs[turnNum] =
             {
-                explore: {phase:"Explore", log:[], endGrid: []},
-                gather: {phase:"Gather", log:[], endGrid: []},
-                sync: {phase:"Sync", log:[], endGrid: []},
+                Start:{phase:"Start", log:[], endGrid: []},
+                Explore: {phase:"Explore", log:[], endGrid: []},
+                Gather: {phase:"Gather", log:[], endGrid: []},
+                Sync: {phase:"Sync", log:[], endGrid: []},
             };
         }
-        turnNum[turnPhase].endGrid=JSON.parse(JSON.stringify(gridInfo));
+        this.turnLogs[turnNum][turnPhase].endGrid=JSON.parse(JSON.stringify(gridInfo));
     }
 
 }

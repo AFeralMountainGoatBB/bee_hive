@@ -3,11 +3,12 @@ class LogEntryClass
     message;
     messageType;
     messagePhase;
-    constructor(message, type, phase)
+    globalLog;
+    constructor(message, type, globalLog)
     {
         this.message = message;
         this.type=type;
-        this.phase=phase;
+        this.globalLog=globalLog;
     }
 
 }

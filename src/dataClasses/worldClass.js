@@ -1,8 +1,10 @@
 import GridClass from "./gridClass";
 import HiveClass from './hiveClass';
+import LogClass from './logClass'
 
 class WorldClass{
     hive;
+    globalLog;
     worldGrid;
     gameplayOptions;
     turnDisplay;
@@ -17,10 +19,11 @@ class WorldClass{
     subTurnCycleActive=0;
     constructor(mapOptions, gameplayOptions)
     {
+        this.globalLog = new LogClass(this);
         //create grid
         this.worldGrid=new GridClass(mapOptions);
         //create hive based on grid locations
-        this.hive=new HiveClass(this.worldGrid.hiveLocation, gameplayOptions.numBees, this.worldGrid);
+        this.hive=new HiveClass(this.worldGrid.hiveLocation, gameplayOptions.numBees, this.worldGrid, this.globalLog);
         this.gameplayOptions=gameplayOptions;
         this.turnDisplay=this.updateTurnDisplay();
     }
@@ -75,6 +78,7 @@ class WorldClass{
         this.endCase = this.checkEndCases();
         if (this.endCase !== false) {
             console.log("endCase", this.endCase);
+            console.log("Log at end", this.globalLog);
         }
         this.hive.startPhase();
     }

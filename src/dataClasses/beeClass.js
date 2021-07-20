@@ -131,10 +131,9 @@ class BeeClass {
 
     beeLog(tile, action, actionType)
     {
-        let message = `Bee ${this.beeId} has ${action} tile ${tile.xLoc + tile.yLoc}`
+        let message = `Bee ${this.beeId} has ${action} tile ${tile.xLoc +"-"+ tile.yLoc}`
         let type = ["Bee", actionType];
-        let phase = this.worldGrid.subTurnCycle[this.worldGrid.subTurnCycleActive];
-        let logEntry = new LogEntryClass(message, type, phase);
+        let logEntry = new LogEntryClass(message, type, this.globalLog);
         return logEntry;
     }
 

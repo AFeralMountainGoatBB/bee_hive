@@ -56,7 +56,7 @@ class HiveClass {
         for (let tile in avoidTiles) {
             this.worldGrid.fullGridModel[avoidTiles[tile].xLoc][avoidTiles[tile].yLoc].status = "Explored";
         }
-        this.globalLog.addTurnInfo(this.worldGrid.turnTracker, this.worldGrid.subTurnCycle[this.worldGrid.subTurnCycleActive])
+        this.globalLog.addTurnInfo(this.worldGrid.fullGridModel)
     }
 
     gatherPhase() {
