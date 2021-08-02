@@ -9,7 +9,7 @@ class BeeClass {
     xLoc;
     yLoc;
     beeId;
-    constructor(gridModel, id, log) {
+    constructor(gridModel, id, log, RNG) {
         this.beeId = id;
         this.alive = true;
         this.globalLog=log;
@@ -18,6 +18,7 @@ class BeeClass {
         this.xLoc = gridModel.hiveLocation.x;
         this.yLoc = gridModel.hiveLocation.y;
         this.worldGrid.fullGridModel[this.xLoc][this.yLoc].addBee();
+        this.RNG=RNG;
     }
     copyMemory(model) {
         this.memory = JSON.parse(JSON.stringify(model));
@@ -28,7 +29,7 @@ class BeeClass {
         //move to tile (increment bee on tile), check for danger, if danger, roll for death
         let moveTile = this.worldGrid.fullGridModel[tile.xLoc][tile.yLoc];
         if (moveTile.feature?.name === "Danger") {
-            if (Math.floor(Math.random() * 100) <= moveTile.feature.chance) {
+            if (Math.floor(this.RNG()*100) <= moveTile.feature.chance) {
                 //bee has died
                 moveTile.addDeadBee();
                 this.globalLog.addToLog(this.beeLog(moveTile, "died on", "Death"));
@@ -54,7 +55,7 @@ class BeeClass {
             return startTile;
         }
         //choose randomly from the array
-        let tempLoc = Math.floor(Math.random() * exploreArray.length);
+        let tempLoc = Math.floor(this.RNG() * exploreArray.length);
         let moveTile = exploreArray[tempLoc];
 
         //move there
@@ -87,7 +88,7 @@ class BeeClass {
             return startTile;
         }
         //choose randomly from the array
-        let tempLoc = Math.floor(Math.random() * gatherArray.length);
+        let tempLoc = Math.floor(this.RNG() * gatherArray.length);
         let moveTile = gatherArray[tempLoc];
         //move there
         let success = this.moveToTile(moveTile);

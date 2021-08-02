@@ -1,13 +1,14 @@
 import GridClass from "./gridClass";
 import HiveClass from './hiveClass';
 import LogClass from './logClass'
-
+import seedRandom from 'seedrandom'
 class WorldClass{
     hive;
     globalLog;
     worldGrid;
     gameplayOptions;
     turnDisplay;
+    displayGrid;
     turnTracker=0;
     subTurnCycle=[
         "Start",
@@ -17,15 +18,31 @@ class WorldClass{
     ];
     endCase=false;
     subTurnCycleActive=0;
+    RNG;
     constructor(mapOptions, gameplayOptions)
     {
         this.globalLog = new LogClass(this);
         //create grid
         this.worldGrid=new GridClass(mapOptions);
-        //create hive based on grid locations
-        this.hive=new HiveClass(this.worldGrid.hiveLocation, gameplayOptions.numBees, this.worldGrid, this.globalLog);
+        this.displayGrid=this.worldGrid;
+        //create hive based on grid locations       
+        this.RNG=new seedRandom(mapOptions.seed);
+        this.hive=new HiveClass(this.worldGrid.hiveLocation, gameplayOptions.numBees, this.worldGrid, this.globalLog, this.RNG);
         this.gameplayOptions=gameplayOptions;
         this.turnDisplay=this.updateTurnDisplay();
+    }
+
+    changeDisplayGrid(isMemory, turnNum, turnPhase)
+    {
+        if(isMemory)
+        {
+            this.displayGrid=this.globalLog.getTurnInfo(turnNum, turnPhase);
+        }
+        else
+        {
+            this.displayGrid=this.worldGrid;
+        }
+        
     }
 
     advanceTurn()

@@ -2,6 +2,7 @@
 
 class LogClass {
     turnLogs = [];
+    sliderValues=[{}]
     worldClass;
     constructor(worldClass, settings) {
         this.worldClass=worldClass;
@@ -42,8 +43,19 @@ class LogClass {
         this.turnLogs[turnNum][turnPhase].endGrid=JSON.parse(JSON.stringify(gridInfo));
     }
 
+    updateSliderValues()
+    {
+        let newValues=[{}];
+        //generate slider values for each turn
+
+    }
+
+    getTurnInfo(turnNum, turnPhase)
+    {
+        return this.turnLogs[turnNum][turnPhase];
+    }
+
+
 }
-
-
 
 export default LogClass;

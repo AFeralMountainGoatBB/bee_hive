@@ -10,19 +10,21 @@ class HiveClass {
     sharingMemory = true;
     planning = true;
     hiveMemory;
+    RNG;
 
-    constructor(location, numBees, gridClass, log) {
+    constructor(location, numBees, gridClass, log, RNG) {
         this.globalLog=log;
         this.location = location;
         this.numBees = numBees;
         this.worldGrid = gridClass;
         this.hiveMemory = gridClass;
+        this.RNG=RNG
         this.generateBees();
     }
 
     generateBees() {
         for (let i = 0; i < this.numBees; i++) {
-            this.beeArray.push(new BeeClass(this.worldGrid, i, this.globalLog));
+            this.beeArray.push(new BeeClass(this.worldGrid, i, this.globalLog, this.RNG));
         }
 
     }

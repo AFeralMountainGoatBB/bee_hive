@@ -6,6 +6,7 @@ import OptionsController from '../components/OptionsController.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import EndDialog from '../components/EndDialog.js';
+import Slider from '@material-ui/core/Slider';
 
 const useStyles = makeStyles({
   list: {
@@ -74,13 +75,16 @@ function MainPage() {
   function generateWorld() {
     console.log("settings for gen", settingsState);
     //get options and group them when controls exist
+    if (!settingsState.seed)
+    {
+      settingsState.seed = Math.floor(Math.random() * 999999999);
+    }
     let mapOptions = {
       height: settingsState.height,
       width: settingsState.width,
       numDanger: settingsState.numDanger,
       numFood: settingsState.numFood,
       seed: settingsState.seed
-      
     }
     let gameplayOptions = {
       numBees: settingsState.numBees,
@@ -137,9 +141,17 @@ function MainPage() {
         {(worldModel) ?
           <div >
             <p>{worldModel.turnDisplay}</p>
-            <Grid gridModel={worldModel.worldGrid} />
+            <Grid gridModel={worldModel.displayGrid} />
             <Button style={{color:"white"}} onClick={() => advanceTurn()}>Advance Turn</Button>
             <Button style={{color:"white"}} onClick={autoRunToggle}>Toggle AutoRun</Button>
+            <Slider
+          defaultValue={worldModel.turnTracker}
+         // getAriaValueText={valuetext}
+          aria-labelledby="discrete-slider-always"
+          step={10}
+         // marks={this.globalLog.sliderValues}
+          valueLabelDisplay="auto"
+      />
           </div> :
           <Button style={{color:"white"}} onClick={() => generateWorld()}>Generate World</Button>}
       </div>
