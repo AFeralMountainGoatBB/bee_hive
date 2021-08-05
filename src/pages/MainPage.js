@@ -36,7 +36,7 @@ function MainPage() {
       width: 10,
       numDanger: 3,
       numFood: 3,
-      seed: "Default",
+      seed: "Random",
       numBees:3,
       planning:true,
       syncing:true
@@ -75,7 +75,7 @@ function MainPage() {
   function generateWorld() {
     console.log("settings for gen", settingsState);
     //get options and group them when controls exist
-    if (!settingsState.seed)
+    if (settingsState.seed == "Random" || !settingsState.seed)
     {
       settingsState.seed = Math.floor(Math.random() * 999999999);
     }

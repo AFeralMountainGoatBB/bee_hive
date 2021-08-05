@@ -37,6 +37,19 @@ function OptionsController(props) {
         <div style={{margin:"10px"}}>
             <p>Settings:</p>
         <FormControl>
+        <div>
+        <TextField
+        style={{margin:"10px"}}
+          required
+          id="seedInput"
+          label="RNG seed"
+          defaultValue={props.settings.seed}
+          variant="outlined"
+          onChange={handleOptionsChange}
+          name="seed"
+          autoComplete='off'
+        />
+        </div>
             <div>
         <TextField
         style={{margin:"10px"}}

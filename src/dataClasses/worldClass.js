@@ -73,8 +73,8 @@ class WorldClass{
         switch(stage)
         {
             case "Start":
-            this.startStage();
-            break;
+                this.startStage();
+                break;
             case "Explore":
                 this.exploreStage();
                 break;
